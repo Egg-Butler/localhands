@@ -1,0 +1,96 @@
+# OpenHands 优化配置 - 针对本地 14B 模型
+# 此配置文件包含了针对本地 14B 模型的全面优化设置
+
+#################################### LLM #####################################
+# Configuration for LLM models (group name starts with 'llm')
+# use 'llm' for the default LLM config
+##############################################################################
+[llm]
+# API key to use (For Headless / CLI only -  In Web this is overridden by Session Init)
+api_key = "lm-studio"
+
+# API base URL (For Headless / CLI only -  In Web this is overridden by Session Init)
+base_url = "http://host.docker.internal:1234/v1"
+
+
+# Maximum number of input tokens
+max_input_tokens = 32000
+
+# Maximum number of output tokens
+max_output_tokens = 4096
+
+# Model to use. (For Headless / CLI only -  In Web this is overridden by Session Init)
+# 默认模型配置 - 已优化
+model = "local-model"
+
+# Number of retries to attempt when an operation fails with the LLM.
+num_retries = 3
+
+# Maximum wait time (in seconds) between retry attempts
+# This caps the exponential backoff to prevent excessively long
+retry_max_wait = 8
+
+# Minimum wait time (in seconds) between retry attempts
+# This sets the initial delay before the first retry
+retry_min_wait = 2
+
+# Timeout for the API
+timeout = 120
+
+
+
+#################################### Agent ###################################
+# Configuration for agents (group name starts with 'agent')
+# Use 'agent' for the default agent config
+# otherwise, group name must be `agent.<agent_name>` (case-sensitive), e.g.
+# agent.CodeActAgent
+##############################################################################
+[agent]
+
+# Filename of the system prompt template file within the agent's prompt directory
+system_prompt_filename = "system_prompt_local_llm.j2"
+
+# Whether the browsing tool is enabled
+# Note: when this is set to true, enable_browser in the core config must also be true
+enable_browsing = true
+
+# Whether the LLM draft editor is enabled
+enable_llm_editor = false
+
+# Whether the standard editor tool (str_replace_editor) is enabled
+# Only has an effect if enable_llm_editor is False
+enable_editor = true
+
+# Whether the IPython tool is enabled
+enable_jupyter = true
+
+# Whether the command tool is enabled
+enable_cmd = true
+
+# Whether the think tool is enabled
+enable_think = true
+
+# Whether the finish tool is enabled
+enable_finish = true
+
+#################################### Sandbox ###################################
+# Configuration for the sandbox
+##############################################################################
+[sandbox]
+
+# Enable auto linting after editing
+enable_auto_lint = true
+
+
+
+#################################### Condenser #################################
+# Condensers control how conversation history is managed and compressed when
+# the context grows too large. Each agent uses one condenser configuration.
+##############################################################################
+[condenser]
+# 3. Recent Events Condenser
+type = "recent"
+# Number of initial events to always keep (typically includes task description)
+keep_first = 1
+# Maximum number of events to keep in history
+max_events = 80
