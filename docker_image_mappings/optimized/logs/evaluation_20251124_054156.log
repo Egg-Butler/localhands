@@ -1,0 +1,35 @@
+🚀 开始Optimized评测 (12个实例, 在线Qwen3-14B)...
+配置: eval_aliyun_qwen3_14b
+模型: Qwen3-14B (阿里云DashScope, 32K上下文)
+实例ID: scikit-learn__scikit-learn-25500,psf__requests-1963,pallets__flask-4045,django__django-11532,astropy__astropy-11693,pallets__flask-5063,django__django-13230,sympy__sympy-18189,pallets__flask-4992,psf__requests-2317,psf__requests-2148,pydata__xarray-6804
+执行命令: poetry run python evaluation/benchmarks/swe_bench/run_infer.py     --llm-config "eval_aliyun_qwen3_14b"     --agent-cls "CodeActAgent"     --max-iterations "25"     --eval-num-workers "1"     --split "test"     --dataset "princeton-nlp/SWE-bench_Lite"     --eval-note "optimized"     --eval-ids "scikit-learn__scikit-learn-25500,psf__requests-1963,pallets__flask-4045,django__django-11532,astropy__astropy-11693,pallets__flask-5063,django__django-13230,sympy__sympy-18189,pallets__flask-4992,psf__requests-2317,psf__requests-2148,pydata__xarray-6804"
+
+[92m05:42:02 - openhands:INFO[0m: run_infer.py:175 - Default docker image prefix: docker.io/xingyaoww/
+[92m05:42:14 - openhands:INFO[0m: run_infer.py:94 - Dataset type set to: SWE-bench
+[92m05:42:14 - openhands:INFO[0m: run_infer.py:745 - Filtering 1 tasks from "SKIP_IDS"...
+[92m05:42:14 - openhands:INFO[0m: run_infer.py:782 - Loaded dataset princeton-nlp/SWE-bench_Lite with split test: 300 tasks
+[92m05:42:14 - openhands:INFO[0m: shared.py:191 - Using evaluation output directory: evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized
+[92m05:42:14 - openhands:INFO[0m: shared.py:212 - Metadata: {"agent_class":"CodeActAgent","llm_config":{"model":"dashscope/qwen3-14b","api_key":"**********","base_url":"https://dashscope.aliyuncs.com/compatible-mode/v1","api_version":null,"aws_access_key_id":null,"aws_secret_access_key":null,"aws_region_name":null,"openrouter_site_url":"https://docs.all-hands.dev/","openrouter_app_name":"OpenHands","num_retries":5,"retry_multiplier":8.0,"retry_min_wait":8,"retry_max_wait":64,"timeout":null,"max_message_chars":30000,"temperature":0.0,"top_p":1.0,"top_k":null,"custom_llm_provider":null,"max_input_tokens":32000,"max_output_tokens":4096,"input_cost_per_token":null,"output_cost_per_token":null,"ollama_base_url":null,"drop_params":true,"modify_params":false,"disable_vision":null,"disable_stop_word":false,"caching_prompt":true,"log_completions":true,"log_completions_folder":"/Users/bitfun/codes/closehands/OpenHands/logs/completions","custom_tokenizer":null,"native_tool_calling":null,"reasoning_effort":null,"seed":null,"safety_settings":null,"for_routing":false,"correct_num":5,"completion_kwargs":{"extra_body":{"enable_thinking":false}}},"agent_config":null,"max_iterations":25,"eval_output_dir":"evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized","start_time":"2025-11-24 05:42:14","git_commit":"581ac783a173a7b0b3b5161a8b3a143600912f85","dataset":"princeton-nlp__SWE-bench_Lite-test","data_split":null,"details":{"mode":"swe"},"condenser_config":{"type":"noop"},"instruction_template_name":null}
+[92m05:42:14 - openhands:INFO[0m: run_infer.py:866 - 
+Using specific dataset IDs: ['scikit-learn__scikit-learn-25500', 'psf__requests-1963', 'pallets__flask-4045', 'django__django-11532', 'astropy__astropy-11693', 'pallets__flask-5063', 'django__django-13230', 'sympy__sympy-18189', 'pallets__flask-4992', 'psf__requests-2317', 'psf__requests-2148', 'pydata__xarray-6804']
+
+[92m05:42:14 - openhands:INFO[0m: shared.py:231 - Writing evaluation output to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl
+[92m05:42:14 - openhands:WARNING[0m: shared.py:238 - 
+Output file evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl already exists. Loaded 9 finished instances.
+[92m05:42:14 - openhands:INFO[0m: shared.py:245 - Limiting evaluation to 12 specific instances.
+[92m05:42:14 - openhands:INFO[0m: shared.py:292 - Finished instances: 9, Remaining instances: 0
+[92m05:42:14 - openhands:INFO[0m: shared.py:507 - Evaluation started with Agent CodeActAgent:
+model dashscope/qwen3-14b, max iterations 25.
+
+### OUTPUT FILE: evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl ###
+Instances processed: 0it [00:00, ?it/s][92m05:42:14 - openhands:INFO[0m: shared.py:552 - 
+Evaluation finished.
+
+Instances processed: 0it [00:00, ?it/s]
+/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/litellm/llms/custom_httpx/async_client_cleanup.py:66: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+📊 查找输出文件...
+✅ 找到输出文件: ./evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl
+✅ 已复制输出文件到: /Users/bitfun/codes/closehands/docker_image_mappings/optimized/results/output.jsonl
+✅ 已复制LLM completions
+📊 生成报告...

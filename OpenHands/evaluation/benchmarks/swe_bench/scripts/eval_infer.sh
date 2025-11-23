@@ -97,6 +97,9 @@ if [ -z "$INSTANCE_ID" ]; then
     # Default to SWE-Bench-lite
     # change `--dataset_name` and `--split` to alter dataset
 
+    # Set Docker platform to linux/amd64 for Apple Silicon compatibility
+    export DOCKER_DEFAULT_PLATFORM=linux/amd64
+    
     poetry run python -m swebench.harness.run_evaluation \
         --dataset_name "$DATASET_NAME" \
         --split "$SPLIT" \

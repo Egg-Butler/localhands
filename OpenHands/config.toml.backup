@@ -1,0 +1,348 @@
+# OpenHands Configuration for Local Model Evaluation
+
+[core]
+# Workspace settings
+workspace_base = "./workspace"
+cache_dir = "/tmp/openhands_cache"
+debug = true
+max_iterations = 100
+default_agent = "CodeActAgent"
+runtime = "local"  # Use local runtime for evaluation
+
+[llm]
+# 本地模型配置 - 使用Ollama或本地API服务
+# 方案1: 使用Ollama (推荐用于本地评测)
+model = "ollama/qwen2.5-coder:14b"
+base_url = "http://localhost:11434"
+api_key = "ollama"  # Ollama doesn't require API key
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+
+# 方案2: 使用OpenAI兼容的本地API (如vLLM, Text Generation Inference等)
+# model = "Qwen/Qwen2.5-Coder-14B-Instruct"
+# base_url = "http://localhost:8000/v1"
+# api_key = "EMPTY"
+# temperature = 0.0
+
+# 方案3: 使用LM Studio本地服务
+# model = "local-model"
+# base_url = "http://localhost:1234/v1"
+# api_key = "lm-studio"
+
+[llm.eval_local_model]
+# 评测用的本地模型配置 (14B - 更准确但较慢)
+model = "ollama/qwen2.5-coder:14b"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true  # 启用提示缓存以提高性能
+
+[llm.eval_local_model_7b]
+# 评测用的本地模型配置 (7B - 更快但准确率略低)
+model = "ollama/qwen2.5-coder:7b"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true  # 启用提示缓存以提高性能
+
+[llm.eval_local_model_llama3]
+# 评测用的本地模型配置 (Llama-3.1-8B-Instruct - 更好的指令理解能力)
+# 注意: 虽然不支持原生工具调用，但Llama-3.1在理解指令方面表现更好
+# 会使用mock function calling通过prompt engineering模拟工具调用
+model = "ollama/llama3.1:8b"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true  # 启用提示缓存以提高性能
+
+[llm.eval_local_model_llama3_2_3b]
+# 评测用的本地模型配置 (Llama-3.2-3B)
+model = "ollama/llama3.2:3b"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true
+
+[llm.eval_local_model_mistral]
+# 评测用的本地模型配置 (Mistral-7B-Instruct)
+# 注意: OpenHands目前不识别Mistral为支持原生工具调用，但Mistral-7B v0.3+支持函数调用
+# 会使用mock function calling，但Mistral在指令遵循方面表现优秀
+model = "ollama/mistral:7b-instruct"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true  # 启用提示缓存以提高性能
+
+[llm.eval_local_model_openhands_lm]
+# 评测用的本地模型配置 (openhands-lm-7b-v0.1)
+# OpenHands自己训练的模型，专门针对软件工程任务微调
+# 模型地址: https://huggingface.co/all-hands/openhands-lm-7b-v0.1
+# 注意: 不支持原生工具调用，但OpenHands对它有特殊优化处理
+# 会使用mock function calling，且不添加in-context learning示例
+# 
+# 方案1: 使用OpenHands代理服务 (需要API key)
+# model = "openhands/openhands-lm-7b"
+# base_url 和 api_key 会自动设置为OpenHands代理服务
+#
+# 方案2: 本地部署 (通过vLLM，推荐)
+# 1. 安装vLLM: pip install vllm
+# 2. 启动服务: python -m vllm.entrypoints.openai.api_server --model all-hands/openhands-lm-7b-v0.1 --port 8000
+# 3. 使用以下配置:
+model = "all-hands/openhands-lm-7b-v0.1"
+base_url = "http://localhost:8000/v1"
+api_key = "EMPTY"
+temperature = 0.0
+max_input_tokens = 32000
+max_output_tokens = 4096
+caching_prompt = true
+
+[llm.eval_local_model_gpt_oss_20b]
+# 评测用的本地模型配置 (gpt-oss-20b)
+# OpenAI 开源模型，21B 参数，MoE 架构
+# 模型特点:
+# - 21B 参数，但每个 token 只激活约 3.6B 参数 (MoE)
+# - 支持 128K tokens 上下文长度
+# - 优化后可在 16GB 内存设备上运行
+# - 在代码生成和推理任务上表现优秀
+# 
+# 重要提示:
+# - GPT OSS 已通过 llama.cpp 集成到 OpenHands，需要启用原生工具调用
+# - 必须设置 native_tool_calling = true 才能正常工作
+# - GPT OSS 被严格微调为像与 Codex 对话一样响应
+# - 某些反 Codex 的行为（如使用 unified diff 语法）可能不工作
+# - 其他功能都正常工作
+# 
+# 部署方式:
+# 1. 通过 Ollama: ollama pull gpt-oss:20b
+# 2. 通过 Hugging Face: openai/gpt-oss-20b (需要 vLLM)
+# 3. 通过 Clarifai: clarifai/openai.chat-completion.gpt-oss-20b
+model = "ollama/gpt-oss:20b"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 128000  # 支持 128K 上下文
+max_output_tokens = 4096
+caching_prompt = true
+native_tool_calling = true  # 必须启用！GPT OSS 需要原生工具调用支持
+
+[llm.eval_local_model_devstral]
+# 评测用的本地模型配置 (Devstral-Small-2505)
+# Devstral是Mistral AI开发的代码专用模型，专门针对软件工程任务优化
+# 模型特点:
+# - 24B参数，可在单RTX 4090或32GB RAM Mac上运行
+# - 128K上下文窗口
+# - 在SWE-Bench上达到46.8%的准确率（开源模型第一）
+# - Apache 2.0许可证
+# 注意: 不支持原生工具调用，但OpenHands对它有特殊优化处理
+# 会使用mock function calling，且不添加in-context learning示例
+# 本地部署方式: 通过Ollama (ollama pull devstral)
+model = "ollama/devstral"
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.0
+max_input_tokens = 128000  # 支持128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+timeout = 1800  # 增加timeout到30分钟（24B模型在Mac上运行较慢）
+
+[llm.eval_lmstudio_devstral]
+# 评测用的局域网LM Studio服务配置 (Devstral-Small-2505)
+# 使用局域网内其他机器上部署的LM Studio服务
+# 服务地址: 192.168.50.114:1234
+# API identifier: devstral-small-2505
+# 注意: 对于LM Studio的OpenAI兼容API，需要使用openai/前缀或设置custom_llm_provider
+model = "openai/devstral-small-2505"
+base_url = "http://192.168.50.114:1234/v1"
+api_key = "lm-studio"  # LM Studio通常不需要真实的API key，但需要提供占位符
+custom_llm_provider = "openai"  # 指定使用OpenAI兼容的provider
+temperature = 0.0
+max_input_tokens = 128000  # 支持128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+timeout = 1800  # 增加timeout到30分钟（24B模型运行较慢）
+
+[llm.eval_vllm_remote]
+# 评测用的局域网vLLM服务配置
+# 使用局域网内其他机器上部署的vLLM服务
+# 服务地址: 192.168.50.114:8000
+# 模型: Qwen/Qwen3-14B-AWQ
+model = "Qwen/Qwen3-14B-AWQ"
+base_url = "http://192.168.50.114:8000/v1"
+api_key = "EMPTY"  # vLLM通常不需要真实的API key
+temperature = 0.0
+max_input_tokens = 128000  # Qwen3-14B支持128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+timeout = 1800  # 30分钟超时
+
+[llm.eval_lmstudio_qwen3_14b]
+# 评测用的局域网LM Studio服务配置 (Qwen3-14B)
+# 使用局域网内其他机器上部署的LM Studio服务
+# 服务地址: 192.168.50.114:1234
+# API identifier: qwen3-14b
+# 注意: 对于LM Studio的OpenAI兼容API，需要使用openai/前缀或设置custom_llm_provider
+model = "openai/qwen3-14b"
+base_url = "http://192.168.50.114:1234/v1"
+api_key = "lm-studio"  # LM Studio通常不需要真实的API key，但需要提供占位符
+custom_llm_provider = "openai"  # 指定使用OpenAI兼容的provider
+temperature = 0.0
+max_input_tokens = 128000  # 支持128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+timeout = 1800  # 增加timeout到30分钟
+
+[llm.eval_aliyun_qwen]
+# 阿里云DashScope Qwen2.5-7B-Instruct-1M 在线API配置
+# 注意: litellm对dashscope的支持可能需要base_url
+model = "dashscope/qwen2.5-7b-instruct-1m"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 1000000  # 1M上下文
+max_output_tokens = 4096
+caching_prompt = true
+
+[llm.eval_aliyun_qwen3_14b]
+# 阿里云DashScope Qwen3-14B 在线API配置
+# 32K上下文窗口是Qwen3-14B的固定配置
+model = "dashscope/qwen3-14b"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 32000  # 32K上下文（固定配置）
+max_output_tokens = 4096
+caching_prompt = true
+# Qwen3-14B需要设置enable_thinking=false用于非流式调用
+# 注意: completion_kwargs使用数组格式以避免multiprocessing序列化问题
+[llm.eval_aliyun_qwen3_14b.completion_kwargs]
+[llm.eval_aliyun_qwen3_14b.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_aliyun_qwen3_14b_24k]
+# 阿里云DashScope Qwen3-14B 在线API配置 (限制上下文窗口为24K)
+# 用于模拟较小上下文窗口的情况
+model = "dashscope/qwen3-14b"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 24000  # 24K上下文窗口（模拟限制）
+max_output_tokens = 4096
+caching_prompt = true
+# Qwen3-14B需要设置enable_thinking=false用于非流式调用
+[llm.eval_aliyun_qwen3_14b_24k.completion_kwargs]
+[llm.eval_aliyun_qwen3_14b_24k.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_aliyun_qwen3_14b_32k]
+# 阿里云DashScope Qwen3-14B 在线API配置 (限制上下文窗口为32K)
+# 用于模拟32K上下文窗口的情况
+model = "dashscope/qwen3-14b"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 32000  # 32K上下文窗口（模拟限制）
+max_output_tokens = 4096
+caching_prompt = true
+# Qwen3-14B需要设置enable_thinking=false用于非流式调用
+[llm.eval_aliyun_qwen3_14b_32k.completion_kwargs]
+[llm.eval_aliyun_qwen3_14b_32k.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_aliyun_qwen3_coder_plus]
+# 阿里云DashScope Qwen3-Coder-Plus 在线API配置
+# Qwen3-Coder-Plus是专门针对代码任务的模型
+model = "dashscope/qwen3-coder-plus"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 128000  # 128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+# Qwen3-Coder-Plus需要设置enable_thinking=false用于非流式调用
+[llm.eval_aliyun_qwen3_coder_plus.completion_kwargs]
+[llm.eval_aliyun_qwen3_coder_plus.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_aliyun_qwen3_32b]
+# 阿里云DashScope Qwen3-32B 在线API配置
+model = "dashscope/qwen3-32b"
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.0
+max_input_tokens = 128000  # 128K上下文
+max_output_tokens = 4096
+caching_prompt = true
+# Qwen3-32B需要设置enable_thinking=false用于非流式调用
+[llm.eval_aliyun_qwen3_32b.completion_kwargs]
+[llm.eval_aliyun_qwen3_32b.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_local_model_optimized]
+# 优化版本的模型配置 - 用于对比实验
+model = "ollama/qwen2.5-coder:32b"  # 使用更大的模型
+base_url = "http://localhost:11434"
+api_key = "ollama"
+temperature = 0.1  # 稍微增加温度以提高创造性
+max_input_tokens = 32000
+max_output_tokens = 8192  # 增加输出token以支持更长的代码生成
+caching_prompt = true
+
+[agent]
+# Agent配置
+enable_browsing = false  # 禁用浏览以加快评测
+enable_llm_editor = false
+enable_editor = true
+enable_jupyter = true
+enable_cmd = true
+enable_think = true
+enable_finish = true
+enable_history_truncation = true
+enable_condensation_request = false
+
+[agent.CodeActAgent]
+# CodeActAgent特定配置
+llm_config = 'eval_local_model'
+
+[sandbox]
+# Sandbox配置
+timeout = 120
+use_host_network = false
+enable_auto_lint = true  # 启用自动linting以提高代码质量
+initialize_plugins = true
+keep_runtime_alive = false
+rm_all_containers = true
+
+[security]
+# 安全配置
+confirmation_mode = false
+enable_security_analyzer = false  # 评测时禁用以加快速度
+
+[condenser]
+# Memory condenser配置 - 用于管理长对话历史
+type = "recent"
+keep_first = 2
+max_events = 150
+
+[condenser.optimized_condenser]
+# 优化的condenser配置
+type = "llm_attention"
+llm_config = "eval_local_model"
+keep_first = 3
+max_size = 200
+
+# 评测特定配置
+[eval]
+# 这些配置会在evaluation脚本中使用
+selected_ids = []  # 可以在这里指定要评测的specific instances
+

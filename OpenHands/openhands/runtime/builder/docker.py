@@ -137,6 +137,24 @@ class DockerRuntimeBuilder(RuntimeBuilder):
             '--load',
         ]
 
+        # Add proxy build args if proxy environment variables are set
+        # Convert localhost/127.0.0.1 proxy addresses to host.docker.internal for Docker builds
+        # On macOS, host.docker.internal should work, but if it doesn't, we can try gateway IP
+        proxy_vars = ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'NO_PROXY', 'no_proxy']
+        for var in proxy_vars:
+            value = os.environ.get(var)
+            if value:
+                # Replace 127.0.0.1 or localhost with host.docker.internal for Docker builds
+                # This allows containers to access the host's proxy server
+                docker_proxy_value = value
+                if '127.0.0.1' in docker_proxy_value or 'localhost' in docker_proxy_value:
+                    # Try host.docker.internal first (works on macOS/Windows Docker Desktop)
+                    # If that doesn't work, user may need to configure proxy to listen on 0.0.0.0
+                    docker_proxy_value = docker_proxy_value.replace('127.0.0.1', 'host.docker.internal')
+                    docker_proxy_value = docker_proxy_value.replace('localhost', 'host.docker.internal')
+                buildx_cmd.append(f'--build-arg={var}={docker_proxy_value}')
+                logger.debug(f'Adding proxy build arg: {var}={docker_proxy_value}')
+
         # Include the platform argument only if platform is specified
         if platform:
             buildx_cmd.append(f'--platform={platform}')

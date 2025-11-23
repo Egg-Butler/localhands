@@ -1,0 +1,916 @@
+🚀 开始Optimized评测 (12个实例, LM Studio Qwen3-14B)...
+配置: eval_lmstudio_qwen3_14b
+模型: Qwen3-14B (LM Studio, 128K上下文)
+实例ID: scikit-learn__scikit-learn-25500,psf__requests-1963,pallets__flask-4045,django__django-11532,astropy__astropy-11693,pallets__flask-5063,django__django-13230,sympy__sympy-18189,pallets__flask-4992,psf__requests-2317,psf__requests-2148,pydata__xarray-6804
+执行命令: poetry run python evaluation/benchmarks/swe_bench/run_infer.py     --llm-config "eval_lmstudio_qwen3_14b"     --agent-cls "CodeActAgent"     --max-iterations "25"     --eval-num-workers "1"     --split "test"     --dataset "princeton-nlp/SWE-bench_Lite"     --eval-note "optimized"     --eval-ids "scikit-learn__scikit-learn-25500,psf__requests-1963,pallets__flask-4045,django__django-11532,astropy__astropy-11693,pallets__flask-5063,django__django-13230,sympy__sympy-18189,pallets__flask-4992,psf__requests-2317,psf__requests-2148,pydata__xarray-6804"
+
+[92m05:02:24 - openhands:INFO[0m: run_infer.py:175 - Default docker image prefix: docker.io/xingyaoww/
+[92m05:02:29 - openhands:INFO[0m: run_infer.py:94 - Dataset type set to: SWE-bench
+[92m05:02:29 - openhands:INFO[0m: run_infer.py:745 - Filtering 1 tasks from "SKIP_IDS"...
+[92m05:02:29 - openhands:INFO[0m: run_infer.py:782 - Loaded dataset princeton-nlp/SWE-bench_Lite with split test: 300 tasks
+[92m05:02:29 - openhands:INFO[0m: shared.py:191 - Using evaluation output directory: evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized
+[92m05:02:29 - openhands:INFO[0m: shared.py:212 - Metadata: {"agent_class":"CodeActAgent","llm_config":{"model":"openai/qwen3-14b","api_key":"**********","base_url":"http://192.168.50.114:1234/v1","api_version":null,"aws_access_key_id":null,"aws_secret_access_key":null,"aws_region_name":null,"openrouter_site_url":"https://docs.all-hands.dev/","openrouter_app_name":"OpenHands","num_retries":5,"retry_multiplier":8.0,"retry_min_wait":8,"retry_max_wait":64,"timeout":120,"max_message_chars":30000,"temperature":0.0,"top_p":1.0,"top_k":null,"custom_llm_provider":"openai","max_input_tokens":128000,"max_output_tokens":4096,"input_cost_per_token":null,"output_cost_per_token":null,"ollama_base_url":null,"drop_params":true,"modify_params":false,"disable_vision":null,"disable_stop_word":false,"caching_prompt":true,"log_completions":true,"log_completions_folder":"/Users/bitfun/codes/closehands/OpenHands/logs/completions","custom_tokenizer":null,"native_tool_calling":null,"reasoning_effort":null,"seed":null,"safety_settings":null,"for_routing":false,"correct_num":5,"completion_kwargs":null},"agent_config":null,"max_iterations":25,"eval_output_dir":"evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized","start_time":"2025-11-24 05:02:29","git_commit":"581ac783a173a7b0b3b5161a8b3a143600912f85","dataset":"princeton-nlp__SWE-bench_Lite-test","data_split":null,"details":{"mode":"swe"},"condenser_config":{"type":"noop"},"instruction_template_name":null}
+[92m05:02:29 - openhands:INFO[0m: run_infer.py:866 - 
+Using specific dataset IDs: ['scikit-learn__scikit-learn-25500', 'psf__requests-1963', 'pallets__flask-4045', 'django__django-11532', 'astropy__astropy-11693', 'pallets__flask-5063', 'django__django-13230', 'sympy__sympy-18189', 'pallets__flask-4992', 'psf__requests-2317', 'psf__requests-2148', 'pydata__xarray-6804']
+
+[92m05:02:29 - openhands:INFO[0m: shared.py:231 - Writing evaluation output to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl
+[92m05:02:29 - openhands:INFO[0m: shared.py:245 - Limiting evaluation to 12 specific instances.
+[92m05:02:29 - openhands:INFO[0m: shared.py:292 - Finished instances: 0, Remaining instances: 9
+[92m05:02:29 - openhands:INFO[0m: shared.py:507 - Evaluation started with Agent CodeActAgent:
+model openai/qwen3-14b, max iterations 25.
+
+### OUTPUT FILE: evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl ###
+Instances processed:   0%|          | 0/9 [00:00<?, ?it/s][92m05:02:29 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:29 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:29 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:29 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:29 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:29 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry 904f94d7-1d3e-4ab6-9816-a4b8e580afa0]: Registering service for agent
+[92m05:02:30 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:02:30 - openhands:ERROR[0m: shared.py:484 - ----------
+Error in instance [django__django-13230]: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error"). Stacktrace:
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-d53c67dc-484e-41-6d44f6aa75a2abd/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-d53c67dc-484e-41-6d44f6aa75a2abd/json: Not Found ("No such container: openhands-runtime-d53c67dc-484e-41-6d44f6aa75a2abd")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+----------[The above error occurred. Retrying... (attempt 1 of 5)]----------
+
+[92m05:02:35 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:35 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:35 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:35 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:35 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:35 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry c123a127-f592-4ebc-a9b9-1bbb8b50718b]: Registering service for agent
+[92m05:02:36 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:02:36 - openhands:ERROR[0m: shared.py:484 - ----------
+Error in instance [django__django-13230]: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error"). Stacktrace:
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-bc0f319d-06df-4a-6daeb08537a5383/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-bc0f319d-06df-4a-6daeb08537a5383/json: Not Found ("No such container: openhands-runtime-bc0f319d-06df-4a-6daeb08537a5383")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+----------[The above error occurred. Retrying... (attempt 2 of 5)]----------
+
+[92m05:02:41 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:41 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:41 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:41 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:41 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:41 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry a2c29bfa-7c63-4149-a387-84837189245d]: Registering service for agent
+[92m05:02:42 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:02:42 - openhands:ERROR[0m: shared.py:484 - ----------
+Error in instance [django__django-13230]: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error"). Stacktrace:
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-68b7b348-fc7f-44-7332a4c497adaec/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-68b7b348-fc7f-44-7332a4c497adaec/json: Not Found ("No such container: openhands-runtime-68b7b348-fc7f-44-7332a4c497adaec")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+----------[The above error occurred. Retrying... (attempt 3 of 5)]----------
+
+[92m05:02:47 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:47 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:47 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:47 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:47 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:47 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry 1a438c33-0a39-4200-8722-91ad70459d29]: Registering service for agent
+[92m05:02:48 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:02:48 - openhands:ERROR[0m: shared.py:484 - ----------
+Error in instance [django__django-13230]: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error"). Stacktrace:
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-07935e27-1055-4b-59df7e885bb8862/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-07935e27-1055-4b-59df7e885bb8862/json: Not Found ("No such container: openhands-runtime-07935e27-1055-4b-59df7e885bb8862")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+----------[The above error occurred. Retrying... (attempt 4 of 5)]----------
+
+[92m05:02:53 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:53 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:53 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:53 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:53 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:53 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry 6207ad0a-6e58-4880-ae4a-69ebf4c34670]: Registering service for agent
+[92m05:02:54 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:02:54 - openhands:ERROR[0m: shared.py:484 - ----------
+Error in instance [django__django-13230]: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error"). Stacktrace:
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-885fa07c-89df-44-cbbd5deb5c85b7b/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-885fa07c-89df-44-cbbd5deb5c85b7b/json: Not Found ("No such container: openhands-runtime-885fa07c-89df-44-cbbd5deb5c85b7b")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+----------[The above error occurred. Retrying... (attempt 5 of 5)]----------
+
+[92m05:02:59 - openhands:INFO[0m: run_infer.py:217 - Using instance container image: docker.io/swebench/sweb.eval.x86_64.django_1776_django-13230:latest. Please make sure this image exists. Submit an issue on https://github.com/OpenHands/OpenHands if you run into any issues.
+[92m05:02:59 - openhands:INFO[0m: mapping.py:26 - Resource mapping for princeton-nlp__SWE-bench_Lite-test not found.
+[92m05:02:59 - openhands:INFO[0m: shared.py:611 - Logging LLM completions for instance django__django-13230 to evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/llm_completions/django__django-13230
+[92m05:02:59 - openhands:WARNING[0m: utils.py:778 - Model routing config section [model_routing] not found in config.toml
+[92m05:02:59 - openhands:INFO[0m: run_infer.py:622 - Starting evaluation for instance django__django-13230.
+[92m05:02:59 - openhands:INFO[0m: llm_registry.py:87 - [LLM registry 605d882f-6c38-4eb7-a402-85813853a525]: Registering service for agent
+[92m05:03:00 - openhands:INFO[0m: runtime_build.py:191 - Building image: ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq
+[92m05:03:00 - openhands:ERROR[0m: shared.py:462 - 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c/json: Not Found ("No such container: openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+[92m05:03:00 - openhands:ERROR[0m: logger.py:360 - Uncaught exception
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http+docker://localhost/v1.52/containers/openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 173, in connect
+    await call_sync_from_async(self._attach_to_container)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 17, in call_sync_from_async
+    result = await coro
+             ^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 16, in <lambda>
+    coro = loop.run_in_executor(None, lambda: fn(*args, **kwargs))
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 545, in _attach_to_container
+    self.container = self.docker_client.containers.get(self.container_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/containers.py", line 954, in get
+    resp = self.client.api.inspect_container(container_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/container.py", line 793, in inspect_container
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.NotFound: 404 Client Error for http+docker://localhost/v1.52/containers/openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c/json: Not Found ("No such container: openhands-runtime-96096d9e-1993-4b-2b23af3a82d805c")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 416, in _process_instance_wrapper
+    result = process_instance_func(instance, metadata, use_mp, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 641, in process_instance
+    call_async_from_sync(runtime.connect)
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 51, in call_async_from_sync
+    result = future.result()
+             ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 41, in run
+    return asyncio.run(arun())
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/utils/async_utils.py", line 34, in arun
+    result = await coro
+             ^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 181, in connect
+    self.maybe_build_runtime_container_image()
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/impl/docker/docker_runtime.py", line 240, in maybe_build_runtime_container_image
+    self.runtime_container_image = build_runtime_image(
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 141, in build_runtime_image
+    result = build_runtime_image_in_folder(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/utils/runtime_build.py", line 220, in build_runtime_image_in_folder
+    if runtime_builder.image_exists(hash_image_name, False):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/openhands/runtime/builder/docker.py", line 284, in image_exists
+    self.docker_client.images.get(image_name)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/models/images.py", line 333, in get
+    return self.prepare_model(self.client.api.inspect_image(name))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/image.py", line 251, in inspect_image
+    return self._result(
+           ^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 281, in _result
+    self._raise_for_status(response)
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.52/images/ghcr.io/openhands/runtime:oh_v0.62.0_ey3gcq0b3d3xv1qy_pxiegz9mg85kaxnq/json: Internal Server Error ("rpc error: code = Unknown desc = blob sha256:adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454 expected at /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: open /var/lib/desktop-containerd/daemon/io.containerd.content.v1.content/blobs/sha256/adb4e84d145c5deed270e594df00f1590034c6d30c681bb48d0e27ea2fb0a454: input/output error")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/benchmarks/swe_bench/run_infer.py", line 876, in <module>
+    run_evaluation(
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 538, in run_evaluation
+    result = _process_instance_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bitfun/codes/closehands/OpenHands/evaluation/utils/shared.py", line 463, in _process_instance_wrapper
+    raise RuntimeError(
+RuntimeError: Maximum error retries reached for instance django__django-13230
+/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/litellm/llms/custom_httpx/async_client_cleanup.py:66: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+Instances processed:   0%|          | 0/9 [00:32<?, ?it/s]
+📊 查找输出文件...
+✅ 找到输出文件: ./evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_optimized/output.jsonl
+✅ 已复制输出文件到: /Users/bitfun/codes/closehands/docker_image_mappings/optimized/results/output.jsonl
+✅ 已复制LLM completions
+📊 生成报告...

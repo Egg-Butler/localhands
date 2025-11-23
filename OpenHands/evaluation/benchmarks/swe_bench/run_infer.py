@@ -859,8 +859,14 @@ if __name__ == '__main__':
     )
 
     if not ITERATIVE_EVAL_MODE:
+        # Parse eval_ids if provided
+        eval_ids = None
+        if args.eval_ids:
+            eval_ids = str(args.eval_ids).split(',')
+            logger.info(f'\nUsing specific dataset IDs: {eval_ids}\n')
+        
         # load the dataset
-        instances = prepare_dataset(swe_bench_tests, output_file, args.eval_n_limit)
+        instances = prepare_dataset(swe_bench_tests, output_file, args.eval_n_limit, eval_ids=eval_ids)
         if len(instances) > 0 and not isinstance(
             instances['PASS_TO_PASS'][instances['PASS_TO_PASS'].index[0]], str
         ):

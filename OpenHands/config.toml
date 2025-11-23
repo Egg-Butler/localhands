@@ -1,0 +1,239 @@
+# OpenHands 优化配置 - 针对本地 14B 模型
+# 此配置文件包含了针对本地 14B 模型的全面优化设置
+# 合并了原有 config.toml 中的评测相关配置
+# 按照 config.template.toml 的顺序组织
+
+#################################### Core ####################################
+# General core configurations
+##############################################################################
+[core]
+# Base path for the workspace
+workspace_base = "./workspace"
+
+# Cache directory path
+cache_dir = "/tmp/openhands_cache"
+
+# Debugging enabled
+debug = true
+
+# Name of the default agent
+default_agent = "CodeActAgent"
+
+# Maximum number of iterations
+max_iterations = 100
+
+# Runtime environment
+runtime = "local"  # Use local runtime for evaluation
+
+#################################### LLM #####################################
+# Configuration for LLM models (group name starts with 'llm')
+# use 'llm' for the default LLM config
+##############################################################################
+[llm]
+# API key to use (For Headless / CLI only -  In Web this is overridden by Session Init)
+api_key = "lm-studio"
+
+# API base URL (For Headless / CLI only -  In Web this is overridden by Session Init)
+base_url = "http://host.docker.internal:1234/v1"
+
+# Maximum number of input tokens
+max_input_tokens = 32000
+
+# Maximum number of output tokens
+max_output_tokens = 4096
+
+# Model to use. (For Headless / CLI only -  In Web this is overridden by Session Init)
+model = "local-model"
+
+# Number of retries to attempt when an operation fails with the LLM.
+num_retries = 3
+
+# Maximum wait time (in seconds) between retry attempts
+retry_max_wait = 8
+
+# Minimum wait time (in seconds) between retry attempts
+retry_min_wait = 2
+
+# Timeout for the API
+timeout = 120
+
+# 本地模型配置 - 使用Ollama或本地API服务
+# 方案1: 使用Ollama (推荐用于本地评测)
+# model = "ollama/qwen2.5-coder:14b"
+# base_url = "http://localhost:11434"
+# api_key = "ollama"  # Ollama doesn't require API key
+
+# 方案2: 使用OpenAI兼容的本地API (如vLLM, Text Generation Inference等)
+# model = "Qwen/Qwen2.5-Coder-14B-Instruct"
+# base_url = "http://localhost:8000/v1"
+# api_key = "EMPTY"
+
+# 方案3: 使用LM Studio本地服务
+# model = "local-model"
+# base_url = "http://localhost:1234/v1"
+# api_key = "lm-studio"
+
+[llm.eval_aliyun_qwen3_14b]
+# 阿里云DashScope Qwen3-14B 在线API配置
+# 32K上下文窗口是Qwen3-14B的固定配置
+api_key = "sk-7fc9c18178484445aa6e8760791530d0"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+caching_prompt = true
+max_input_tokens = 32000  # 32K上下文（固定配置）
+max_output_tokens = 4096
+model = "dashscope/qwen3-14b"
+temperature = 0.0
+# Qwen3-14B需要设置enable_thinking=false用于非流式调用
+# 注意: completion_kwargs使用数组格式以避免multiprocessing序列化问题
+[llm.eval_aliyun_qwen3_14b.completion_kwargs]
+[llm.eval_aliyun_qwen3_14b.completion_kwargs.extra_body]
+enable_thinking = false
+
+[llm.eval_lmstudio_devstral]
+# 评测用的局域网LM Studio服务配置 (Devstral-Small-2505)
+# 使用局域网内其他机器上部署的LM Studio服务
+# 服务地址: 192.168.50.114:1234
+# API identifier: devstral-small-2505
+# 注意: 对于LM Studio的OpenAI兼容API，需要使用openai/前缀或设置custom_llm_provider
+api_key = "lm-studio"  # LM Studio通常不需要真实的API key，但需要提供占位符
+base_url = "http://192.168.50.114:1234/v1"
+caching_prompt = true
+custom_llm_provider = "openai"  # 指定使用OpenAI兼容的provider
+max_input_tokens = 128000  # 支持128K上下文
+max_output_tokens = 4096
+model = "openai/devstral-small-2505"
+temperature = 0.0
+timeout = 1800  # 增加timeout到30分钟（24B模型运行较慢）
+
+[llm.eval_lmstudio_qwen3_14b]
+# 评测用的局域网LM Studio服务配置 (Qwen3-14B)
+# 使用局域网内其他机器上部署的LM Studio服务
+# 服务地址: 192.168.50.114:1234
+# API identifier: qwen3-14b
+# 注意: 对于LM Studio的OpenAI兼容API，需要使用openai/前缀或设置custom_llm_provider
+api_key = "lm-studio"  # LM Studio通常不需要真实的API key，但需要提供占位符
+base_url = "http://192.168.50.114:1234/v1"
+caching_prompt = true
+custom_llm_provider = "openai"  # 指定使用OpenAI兼容的provider
+max_input_tokens = 32000  # 32K上下文（限制配置）
+max_output_tokens = 4096
+model = "openai/qwen3-14b"
+temperature = 0.0
+timeout = 120  # 2分钟超时
+
+[llm.eval_vllm_remote]
+# 评测用的局域网vLLM服务配置
+# 使用局域网内其他机器上部署的vLLM服务
+# 服务地址: 192.168.50.114:8000
+# 模型: Qwen/Qwen3-14B-AWQ
+# 注意: vLLM使用OpenAI兼容API，需要设置custom_llm_provider或使用openai/前缀
+api_key = "EMPTY"  # vLLM通常不需要真实的API key
+base_url = "http://192.168.50.114:8000/v1"
+caching_prompt = true
+custom_llm_provider = "openai"  # 指定使用OpenAI兼容的provider
+max_input_tokens = 128000  # Qwen3-14B支持128K上下文
+max_output_tokens = 4096
+model = "Qwen/Qwen3-14B-AWQ"
+temperature = 0.0
+timeout = 120  # 2分钟超时
+
+#################################### Agent ###################################
+# Configuration for agents (group name starts with 'agent')
+# Use 'agent' for the default agent config
+# otherwise, group name must be `agent.<agent_name>` (case-sensitive), e.g.
+# agent.CodeActAgent
+##############################################################################
+[agent]
+# Whether the browsing tool is enabled
+# Note: when this is set to true, enable_browser in the core config must also be true
+enable_browsing = true
+
+# Whether the command tool is enabled
+enable_cmd = true
+
+# Whether the standard editor tool (str_replace_editor) is enabled
+# Only has an effect if enable_llm_editor is False
+enable_editor = true
+
+# Whether the finish tool is enabled
+enable_finish = true
+
+# Whether the IPython tool is enabled
+enable_jupyter = true
+
+# Whether the LLM draft editor is enabled
+enable_llm_editor = false
+
+# Whether the think tool is enabled
+enable_think = true
+
+# Whether history should be truncated to continue the session when hitting LLM context length limit
+enable_history_truncation = true
+
+# Whether the condensation request tool is enabled
+enable_condensation_request = false
+
+# Filename of the system prompt template file within the agent's prompt directory
+system_prompt_filename = "system_prompt_local_llm.j2"
+
+[agent.CodeActAgent]
+# CodeActAgent特定配置
+# 默认使用LM Studio Qwen3-14B模型
+llm_config = 'eval_lmstudio_qwen3_14b'
+
+#################################### Sandbox ###################################
+# Configuration for the sandbox
+##############################################################################
+[sandbox]
+# Enable auto linting after editing
+enable_auto_lint = true
+
+# Whether to initialize plugins
+initialize_plugins = true
+
+# Keep runtime alive after session ends
+keep_runtime_alive = false
+
+# Remove all containers when stopping the runtime
+rm_all_containers = true
+
+# Sandbox timeout in seconds
+timeout = 120
+
+# Use host network
+use_host_network = false
+
+#################################### Security ###################################
+# Configuration for security features
+##############################################################################
+[security]
+# Enable confirmation mode (For Headless / CLI only -  In Web this is overridden by Session Init)
+confirmation_mode = false
+
+# Whether to enable security analyzer
+# 评测时禁用以加快速度
+enable_security_analyzer = false
+
+#################################### Condenser #################################
+# Condensers control how conversation history is managed and compressed when
+# the context grows too large. Each agent uses one condenser configuration.
+##############################################################################
+[condenser]
+# 3. Recent Events Condenser
+type = "recent"
+
+# Number of initial events to always keep (typically includes task description)
+keep_first = 1
+
+# Maximum number of events to keep in history
+max_events = 80
+
+#################################### Eval ####################################
+# Configuration for the evaluation
+# 仅支持 SWE-Bench Lite 评测
+##############################################################################
+[eval]
+# SWE-Bench Lite 评测配置
+# 可以在这里指定要评测的specific instances
+# 如果为空，则评测所有实例
+selected_ids = []

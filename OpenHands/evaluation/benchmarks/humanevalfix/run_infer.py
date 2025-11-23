@@ -33,6 +33,7 @@ from evaluation.utils.shared import (
 from openhands.controller.state.state import State
 from openhands.core.config import (
     OpenHandsConfig,
+    get_evaluation_parser,
     get_llm_config_arg,
     parse_arguments,
 )
@@ -267,7 +268,9 @@ def process_instance(
 
 
 if __name__ == '__main__':
-    args = parse_arguments()
+    # Use evaluation parser to support eval-specific arguments
+    parser = get_evaluation_parser()
+    args = parser.parse_args()
 
     # NOTE: It is preferable to load datasets from huggingface datasets and perform post-processing
     # so we don't need to manage file uploading to OpenHands's repo

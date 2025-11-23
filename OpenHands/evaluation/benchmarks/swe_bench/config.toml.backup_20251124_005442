@@ -1,0 +1,10 @@
+# 选择5个简单的任务进行测试
+# 这些任务来自flask和requests代码库，通常比较简单
+selected_ids = [
+    'pallets__flask-4045',
+    'pallets__flask-4992',
+    'pallets__flask-5063',
+    'psf__requests-1963',
+    'psf__requests-2148'
+]
+

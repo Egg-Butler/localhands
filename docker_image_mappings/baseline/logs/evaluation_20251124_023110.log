@@ -1,0 +1,21 @@
+[92m04:57:20 - openhands:INFO[0m: run_infer.py:175 - Default docker image prefix: docker.io/xingyaoww/
+usage: run_infer.py [-h] [--config-file CONFIG_FILE] [-t TASK] [-f FILE]
+                    [-n NAME] [--log-level LOG_LEVEL] [-l LLM_CONFIG]
+                    [--agent-config AGENT_CONFIG] [-v] [-d DIRECTORY]
+                    [-c AGENT_CLS] [-i MAX_ITERATIONS]
+                    [-b MAX_BUDGET_PER_TASK] [--no-auto-continue]
+                    [--selected-repo SELECTED_REPO]
+                    [--eval-output-dir EVAL_OUTPUT_DIR]
+                    [--eval-n-limit EVAL_N_LIMIT]
+                    [--eval-num-workers EVAL_NUM_WORKERS]
+                    [--eval-note EVAL_NOTE] [--eval-ids EVAL_IDS]
+                    [--dataset DATASET] [--split SPLIT]
+                    [--mode {swe,swt,swt-ci}]
+run_infer.py: error: argument -i/--max-iterations: invalid int value: '"25"'
+/Users/bitfun/Library/Caches/pypoetry/virtualenvs/openhands-ai-qyGq0z-P-py3.12/lib/python3.12/site-packages/litellm/llms/custom_httpx/async_client_cleanup.py:66: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+📊 查找输出文件...
+✅ 找到输出文件: ./evaluation/evaluation_outputs/outputs/princeton-nlp__SWE-bench_Lite-test/CodeActAgent/qwen3-14b_maxiter_25_N_baseline/output.jsonl
+✅ 已复制输出文件到: /Users/bitfun/codes/closehands/docker_image_mappings/baseline/results/output.jsonl
+✅ 已复制LLM completions（仅包含output.jsonl中的实例）
+📊 生成报告...
