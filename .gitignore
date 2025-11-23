@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+*venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.log.*
+
+# Test outputs
+test_*.log
+*_output.jsonl
+*_comparison_report.txt
+
+# Cache
+.cache/
+cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Evaluation outputs
+evaluation/evaluation_outputs/
+evaluation/outputs/
+
+# Workspace
+/workspace
+/_test_workspace
+/debug
+
+# Configuration (keep template)
+config.toml
+config.toml_
+config.toml.bak
+
